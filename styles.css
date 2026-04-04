@@ -294,6 +294,20 @@ h1 {
   gap: 0.5rem;
 }
 
+.mobile-shortlist-toggle {
+  display: none;
+  border: 1px solid var(--line-strong);
+  background: #fffdf8;
+  border-radius: 999px;
+  padding: 0.36rem 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.shortlist-body {
+  overflow: hidden;
+}
+
 .ghost-button {
   border: 1px solid var(--line-strong);
   background: #fffdf8;
@@ -374,8 +388,13 @@ h1 {
   }
 
   .shortlist {
-    position: static;
+    order: -1;
+    position: sticky;
+    top: calc(0.4rem + env(safe-area-inset-top));
+    z-index: 30;
     max-height: none;
+    overflow: clip;
+    padding: 0.75rem 0.85rem;
   }
 
   .catalog,
@@ -385,5 +404,37 @@ h1 {
 
   #searchInput {
     max-width: none;
+  }
+
+  .mobile-shortlist-toggle {
+    display: inline-flex;
+  }
+
+  .shortlist-header {
+    gap: 0.35rem;
+  }
+
+  .shortlist-header h2 {
+    font-size: 1rem;
+  }
+
+  .shortlist-body {
+    max-height: 60vh;
+    opacity: 1;
+    transition: max-height 240ms ease, opacity 180ms ease, margin-top 240ms ease;
+    margin-top: 0.25rem;
+  }
+
+  .shortlist.mobile-collapsed .shortlist-body {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    pointer-events: none;
+  }
+
+  .shortlist-content {
+    max-height: 44vh;
+    overflow: auto;
+    padding-right: 0.15rem;
   }
 }

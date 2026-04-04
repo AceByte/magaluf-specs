@@ -5,6 +5,9 @@ const ui = {
   categoryFilters: document.querySelector("#categoryFilters"),
   cocktailGrid: document.querySelector("#cocktailGrid"),
   resultsMeta: document.querySelector("#resultsMeta"),
+  shortlist: document.querySelector(".shortlist"),
+  shortlistBody: document.querySelector("#shortlistBody"),
+  toggleShortlistMobile: document.querySelector("#toggleShortlistMobile"),
   shortlistContent: document.querySelector("#shortlistContent"),
   clearShortlist: document.querySelector("#clearShortlist"),
   cardTemplate: document.querySelector("#cocktailCardTemplate")
@@ -14,6 +17,7 @@ const state = {
   cocktails: [],
   activeCategory: "Alle",
   searchText: "",
+  mobileShortlistExpanded: false,
   shortlist: new Set(loadShortlistFromStorage())
 };
 
@@ -27,6 +31,7 @@ async function init() {
     renderCocktails();
     renderShortlist();
     wireEvents();
+    setupMobileShortlistBehavior();
   } catch (error) {
     ui.cocktailGrid.innerHTML = `<p class="empty-state">Fejl: ${error.message}. Aben siden via en lokal server eller brug embedded specs-data.</p>`;
   }
@@ -57,6 +62,15 @@ function wireEvents() {
     persistShortlist();
     renderCocktails();
     renderShortlist();
+  });
+
+  ui.toggleShortlistMobile.addEventListener("click", () => {
+    if (!isMobileLayout()) {
+      return;
+    }
+
+    state.mobileShortlistExpanded = !state.mobileShortlistExpanded;
+    syncMobileShortlistState();
   });
 }
 
@@ -215,6 +229,7 @@ function renderShortlist() {
     state.cocktails.filter((item) => state.shortlist.has(item.name))
   );
   ui.shortlistContent.innerHTML = "";
+  updateShortlistToggleLabel(selected.length);
 
   if (!selected.length) {
     ui.shortlistContent.innerHTML = '<p class="empty-state">Ingen valgt endnu. Tryk pa cocktails for at bygge din short list.</p>';
@@ -269,4 +284,33 @@ function persistShortlist() {
 
 function sortCocktailsByName(cocktails) {
   return [...cocktails].sort((a, b) => a.name.localeCompare(b.name, "da", { sensitivity: "base" }));
+}
+
+function setupMobileShortlistBehavior() {
+  syncMobileShortlistState();
+
+  const mediaQuery = window.matchMedia("(max-width: 920px)");
+  const onLayoutChange = () => {
+    syncMobileShortlistState();
+  };
+
+  if (typeof mediaQuery.addEventListener === "function") {
+    mediaQuery.addEventListener("change", onLayoutChange);
+  } else {
+    mediaQuery.addListener(onLayoutChange);
+  }
+}
+
+function isMobileLayout() {
+  return window.matchMedia("(max-width: 920px)").matches;
+}
+
+function syncMobileShortlistState() {
+  const expanded = !isMobileLayout() || state.mobileShortlistExpanded;
+  ui.shortlist.classList.toggle("mobile-collapsed", !expanded);
+  ui.toggleShortlistMobile.setAttribute("aria-expanded", String(expanded));
+}
+
+function updateShortlistToggleLabel(selectedCount) {
+  ui.toggleShortlistMobile.textContent = selectedCount > 0 ? `Shortlist (${selectedCount})` : "Shortlist";
 }
