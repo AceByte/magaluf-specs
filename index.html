@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cocktail Specs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-b" aria-hidden="true"></div>
+
+    <header class="app-header">
+      <p class="kicker">Magaluf Bar</p>
+      <h1>Cocktail Spec Sheet</h1>
+      <p class="subtitle">Sog hurtigt, browse efter base spirit, og byg en short list til service.</p>
+    </header>
+
+    <main class="layout">
+      <section class="catalog" aria-labelledby="catalog-heading">
+        <div class="toolbar">
+          <h2 id="catalog-heading">Alle Cocktails</h2>
+          <input id="searchInput" type="search" placeholder="Sog: f.eks. vodka, shake, lime..." />
+        </div>
+
+        <div id="categoryFilters" class="filters" aria-label="Filtrer efter kategori"></div>
+        <p id="resultsMeta" class="results-meta"></p>
+        <div id="cocktailGrid" class="cocktail-grid"></div>
+      </section>
+
+      <aside class="shortlist" aria-labelledby="shortlist-heading">
+        <div class="shortlist-header">
+          <h2 id="shortlist-heading">Short List</h2>
+          <button id="clearShortlist" class="ghost-button" type="button">Ryd</button>
+        </div>
+        <p class="shortlist-note">Tryk pa en cocktail for at tilfoje/fjerne den her. Gemmes i browseren.</p>
+        <div id="shortlistContent" class="shortlist-content"></div>
+      </aside>
+    </main>
+
+    <template id="cocktailCardTemplate">
+      <article class="cocktail-card">
+        <button class="card-hitbox" type="button" aria-label="Toggle shortlist"></button>
+        <div class="card-body">
+          <div class="card-head">
+            <h3 class="cocktail-name"></h3>
+            <p class="card-state"></p>
+          </div>
+          <p class="spec-line spec-glass"></p>
+          <p class="spec-line spec-ice"></p>
+          <p class="spec-line spec-method"></p>
+          <div class="spec-ingredients-block">
+            <p class="spec-label">Ingredienser:</p>
+            <ul class="spec-ingredients-list"></ul>
+          </div>
+          <p class="spec-line spec-garnish"></p>
+        </div>
+      </article>
+    </template>
+
+    <script id="embeddedSpecs" type="text/plain">
+Espresso Martini
+Glas: Coupé. Is: Ingen. Metode: Shake.
+Garnish: 3 kaffebønner.
+Ingredienser: 3 cl vodka, 3 cl Kahlua, 5 cl Espresso mix, 1 cl gomme / chokoladesirup.
+Pornstar Martini
+Glas: Martini / Coupé. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: Et Champagne Shot ved siden af.
+Ingredienser: 4 cl vodka, 2 cl passionspuré / sirup, 2 cl limejuice, 1.5 cl gomme / vaniljesirup.
+Moscow Mule
+Glas: Julep Cup / Highball. Is: Cubed / Knust. Metode: Byg.
+Garnish: Mint spring / Limeskive.
+Ingredienser: 4 cl vodka, 1 cl frisk lime, top med Ginger Beer.
+Cosmopolitan
+Glas: Martini. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: Orange Zest.
+Ingredienser: 4 cl vodka, 2 cl Cointreau, 2 cl tranebær, 1.5 cl frisk lime.
+White Russian
+Glas: Rocks. Is: Cubed. Metode: Byg & Shake fløden.
+Garnish: Flødebolle, Oreo, chokoladepulver eller som den er.
+Ingredienser: 3 cl Kahlua, 3 cl vodka, top med half & half eller mælk.
+Black Russian
+Glas: Lowball. Is: Cubed. Metode: Build.
+Ingredienser: 3 cl Kahlua, 3 cl Vodka.
+Sex On The Beach
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Ingredienser: 4 cl vodka, 2 cl ferskenlikør, 5 cl appelsinjuice, 5 cl tranebærjuice.
+Screwdriver
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Garnish: Flot Sugerør / Skruetrækker.
+Ingredienser: 4 cl vodka, top med appelsinjuice.
+Sea Breeze
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Ingredienser: 4 cl vodka, top med 50/50 grape & tranebær.
+Bay Breeze
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Ingredienser: 4 cl vodka, top med 50/50 ananas & tranebær.
+Downtown Abbey
+Glas: Vinglas / Lowball. Is: Knust. Metode: Shake.
+Garnish: Citron Skive.
+Ingredienser: 2 cl vodka, 2 cl frisk citron, 3 cl lakridssirup, 4 cl passionspuré, top med prosecco.
+Dry Martini
+Glas: Coupé Is: Ingen. Metode: Stir.
+Garnish: 2 oliven på pind eller citrontwist.
+Ingredienser: 6 cl gin, 1 cl Dry Vermouth.
+Negroni
+Glas: Lowball. Is: Cubed. Metode: Byg & Stir.
+Garnish: Appelsin Zest.
+Ingredienser: 3 cl gin, 3 cl Sweet Vermouth, 3 cl Campari.
+Bramble
+Glas: Lowball. Is: Knust. Metode: Shake & Float.
+Garnish: Citron Skive.
+Ingredienser: 4 cl gin, 3 cl frisk citron, Crème de Mure (brombærlikør).
+Gin Basil Smash
+Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: Basilikumblad.
+Ingredienser: 4 cl gin, 2 cl frisk citron, 1.5 cl gomme / basilikumsirup, 1.5 cl æggehvide, basilikumsblade.
+Tom Collins
+Glas: High Ball. Is: Cubed. Metode: Shake.
+Garnish: Citron Skive.
+Ingredienser: 4 cl gin, 3 cl frisk citron, 2.5 cl gomme, top med danskvand.
+Gin Hass
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Garnish: Lime Skive.
+Ingredienser: 4 cl gin, 2 cl mangosirup, 2 cl frisk lime, top med lemon sodavand.
+Clover Club
+Glas: Coupé. Is: Ingen. Metode: Dobbeltshake & Fine Strain.
+Garnish: Citron Zest / Hindbær.
+Ingredienser: 4 cl gin, 2 cl hindbærsirup (eller 5 friske hindbær), 2 cl frisk citron, 1.5 cl gomme, 1.5 cl æggehvide.
+French 75
+Glas: Champagne Flute. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: Lemon Zest.
+Ingredienser: 5 cl gin, 2.5 cl frisk citron, 2.5 cl gomme, top med champagne.
+Ramos Gin Fizz
+Glas: Highball. Is: Ingen. Metode: Shakes i 12 min.
+Garnish: Citron Zest & Lime Zest.
+Ingredienser: 6 cl gin, 3 cl fløde, 1.5 cl lime, 1.5 cl citron, 1.5 cl gomme, 1.5 cl æggehvide, 3 dashes Orange Flower Water, top med danskvand.
+Gin & Tonic
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Garnish: Lime / Citron / Agurk / Krydderurter.
+Ingredienser: 4 cl gin, top med tonic.
+Mojito
+Glas: High Ball. Is: Knust. Metode: Muddle, Build & Churn.
+Garnish: Mint spring / Lime.
+Ingredienser: 4 cl lys rom, 4 limebåde, 2 cl gomme, en håndfuld mynte, top med danskvand.
+Straight Up Daiquiri
+Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: Lime Skive.
+Ingredienser: 6 cl lys rom, 3 cl frisk lime, 1.5 cl gomme.
+Mai Tai
+Glas: Lowball. Is: Knust. Metode: Shake & Float.
+Garnish: Mint Sprig.
+Ingredienser: 2 cl lys rom, 2 cl mørk rom, 2 cl Cointreau, 2 cl Orgeat, 2 cl frisk lime. Evt. 1 cl overproof rom float.
+Pina Colada
+Glas: Hurricane / Highball. Is: Knust. Metode: Blend / Shake.
+Garnish: Ananas Skive.
+Ingredienser: 4 cl rom, 8 cl ananasjuice, 2 cl kokossirup, 2 cl fløde. (Ved blend: tilføj 3 ananasskiver).
+Dark and Stormy
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Garnish: Lime Skive.
+Ingredienser: 4 cl mørk rom, 1 cl frisk lime, 2 dashes Angostura Bitter, top med Ginger Beer.
+Cuba Libre
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Garnish: Lime Skive.
+Ingredienser: 4 cl lys rom, 1 cl frisk lime, top med cola.
+Zombie
+Glas: High Ball. Is: Cubed. Metode: Shake.
+Garnish: Appelsin Skive / Mint Spring.
+Ingredienser: 2 cl lys rom, 2 cl mørk rom, 2 cl frisk lime, 2 cl gomme, 3 cl ananasjuice, 3 cl appelsinjuice.
+Straight Up Fresh Fruit Daiquiri
+Glas: Coupé. Is: Ingen. Metode: Muddle, Shake & Fine Strain eller Blend.
+Garnish: Valg af frugt på kanten.
+Ingredienser: 4 cl lys rom, 2 cl frugtlikør eller 2 stykker frisk frugt, 2 cl frisk lime, 1 cl gomme.
+Caramel Addiction
+Glas: Lowball. Is: Cubed. Metode: Shake.
+Garnish: Citron Skive.
+Ingredienser: 2 cl lys rom, 2 cl Cuba Caramel, 2 cl vaniljesirup, 4 cl mælk.
+Old Fashioned
+Glas: Lowball. Is: Cubed. Metode: Stir (30 sekunder).
+Garnish: Appelsin Zest.
+Ingredienser: 6 cl Bourbon, 1 cl gomme, 2 dashes Angostura Bitters.
+Whiskey Sour
+Glas: Lowball. Is: Cubed. Metode: Double Shake.
+Garnish: Appelsin Zest.
+Ingredienser: 5 cl bourbon, 3 cl frisk citron, 1.5 cl gomme, 1.5 cl æggehvide, 2 dashes Angostura Bitters.
+Manhattan
+Glas: Coupé. Is: Ingen. Metode: Stir.
+Garnish: Kirsebær (Normal), Citron Zest (Dry), eller begge (Perfect).
+Ingredienser: 6 cl Bourbon eller Rye, 2 dashes Angostura Bitters. (Sweet Vermouth til Normal, Dry Vermouth til Dry).
+Mint Julep
+Glas: Julep Cup / Lowball. Is: Knust. Metode: "Slow" Shake.
+Garnish: Mint Spring.
+Ingredienser: 6 cl bourbon, 1 cl gomme, 2 dashes Angostura Bitters, en håndfuld mynte.
+Lynchburg Lemonade
+Glas: High Ball. Is: Cubed. Metode: Shake / Byg.
+Garnish: Citron Skive.
+Ingredienser: 4 cl Jack Daniels, 2 cl Cointreau, 2 cl frisk citron, top med Lemonade / Sprite.
+Margarita
+Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: Salt Rim og limeskive.
+Ingredienser: 5 cl tequila, 3 cl frisk lime, 2 cl Cointreau (evt. 1 cl gomme).
+Paloma
+Glas: High Ball. Is: Cubed. Metode: Byg.
+Garnish: Salt Rim & Grape Skive.
+Ingredienser: 4 cl tequila, 1 cl frisk lime, top med rød grape sodavand.
+Tequila Sunrise
+Glas: High Ball. Is: Cubed. Metode: Byg & Float.
+Ingredienser: 4 cl tequila, top med appelsinjuice, 1 cl Grenadine (float).
+Amaretto Sour
+Glas: Lowball. Is: Cubed. Metode: Double Shake.
+Garnish: Appelsin Zest / Kirsebær.
+Ingredienser: 5 cl amaretto, 3 cl frisk citron, 1.5 cl gomme, 1.5 cl æggehvide, 2 dash Angostura Bitter.
+Aperol Spritz
+Glas: Vinglas. Is: Cubed. Metode: Build.
+Garnish: Apelsin Skive / Zest / Oliven.
+Ingredienser: 9 cl prosecco, 6 cl Aperol, 3 cl danskvand.
+Sidecar
+Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: Sukker Rim.
+Ingredienser: 4 cl Cognac, 3 cl frisk citron, 2 cl Cointreau.
+Caipirinha
+Glas: Lowball. Is: Knust. Metode: Muddle, Build & Churn.
+Garnish: Lime Skive.
+Ingredienser: 4 limebåde, 6 cl Cachaça. (Kaldes Caipiroska, hvis der bruges vodka).
+Long Island Ice Tea
+Glas: High Ball. Is: Cubed. Metode: Shake / Byg.
+Garnish: Citron Skive.
+Ingredienser: 2 cl vodka, 2 cl gin, 2 cl lys rom, 2 cl Cointreau, 2 cl tequila, 2 cl frisk citron, 1 cl gomme, top med cola.
+Grasshopper
+Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
+Garnish: After Eight / Muskat.
+Ingredienser: 3 cl Green Creme de Menthe, 3 cl White Creme de Cacao, 4 cl mælk eller half & half.
+Singapore Sling
+Glas: High Ball. Is: Knust. Metode: Shake & Strain.
+Garnish: Ananas Skive.
+Ingredienser: 4 cl gin, 1 cl Cherry Heering, 0.5 cl DOM Benedictine, 0.5 cl Cointreau, 1 cl frisk lime, 6 cl ananasjuice, 1 dash Angostura Bitter, dash af Grenadine.
+    </script>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
