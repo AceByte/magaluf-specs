@@ -202,7 +202,7 @@ function parseSpecs(text) {
 }
 
 function extractInlineField(line, key) {
-  const regex = new RegExp(`${key}\\s*:\\s*([^\\.]+)`, "i");
+  const regex = new RegExp(`${key}\\s*:\\s*(.*?)(?=\\s+(?:Glas|Is|Metode)\\s*:|\\.|$)`, "i");
   const match = line.match(regex);
   return match ? match[1].trim() : "";
 }
