@@ -17,8 +17,10 @@
     <div class="bg-shape bg-shape-b" aria-hidden="true"></div>
 
     <header class="app-header">
-      <p class="kicker">Barschool specs</p>
-      <h1>Cocktail Spec Sheet</h1>
+      <div>
+        <p class="kicker">Barschool specs</p>
+        <h1>Cocktail Spec Sheet</h1>
+      </div>
       <p class="subtitle">Sog hurtigt, browse efter base spirit, og byg en short list til service.</p>
     </header>
 
@@ -27,9 +29,62 @@
         <div class="toolbar">
           <h2 id="catalog-heading">Alle Cocktails</h2>
           <input id="searchInput" type="search" placeholder="Sog: f.eks. vodka, shake, lime..." />
+          <div class="view-toggle">
+            <button id="catalogViewBtn" class="view-toggle-btn active" type="button" aria-pressed="true">Catalog</button>
+            <button id="quizViewBtn" class="view-toggle-btn" type="button" aria-pressed="false">Quiz</button>
+          </div>
         </div>
 
-        <div id="categoryFilters" class="filters" aria-label="Filtrer efter kategori"></div>
+        <div class="filter-panel" aria-label="Filtrer efter kategori">
+          <div class="filters-toolbar">
+            <button id="showAllFiltersBtn" class="filter-chip filter-chip-all active" type="button">Alle</button>
+
+            <div class="filter-menu">
+              <button
+                id="alcoholMenuBtn"
+                class="filter-menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="alcoholMenu"
+              >
+                Alkohol
+              </button>
+              <div id="alcoholMenu" class="filter-menu-content" hidden>
+                <div id="alcoholFilters" class="filter-list"></div>
+              </div>
+            </div>
+
+            <div class="filter-menu">
+              <button
+                id="glassMenuBtn"
+                class="filter-menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="glassMenu"
+              >
+                Glas
+              </button>
+              <div id="glassMenu" class="filter-menu-content" hidden>
+                <div id="glassFilters" class="filter-list"></div>
+              </div>
+            </div>
+
+            <div class="filter-menu">
+              <button
+                id="methodMenuBtn"
+                class="filter-menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="methodMenu"
+              >
+                Metode
+              </button>
+              <div id="methodMenu" class="filter-menu-content" hidden>
+                <div id="methodFilters" class="filter-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         <p id="resultsMeta" class="results-meta"></p>
         <div id="cocktailGrid" class="cocktail-grid"></div>
       </section>
@@ -46,6 +101,42 @@
         </div>
       </aside>
     </main>
+
+    <section id="quizView" class="quiz-view hidden" aria-labelledby="quiz-heading">
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <h2 id="quiz-heading">Cocktail Quiz</h2>
+          <div class="quiz-score">Score: <span id="quizScore">0</span>/<span id="quizTotal">0</span></div>
+        </div>
+
+        <div id="quizContent" class="quiz-content">
+          <div class="quiz-question">
+            <div class="quiz-specs">
+              <p id="quizGlass"></p>
+              <p id="quizMethod"></p>
+              <p id="quizGarnish"></p>
+              <div class="quiz-ingredients-block">
+                <p class="spec-label">Ingredienser:</p>
+                <ul id="quizIngredients" class="quiz-ingredients-list"></ul>
+              </div>
+            </div>
+            <div id="quizOptions" class="quiz-options"></div>
+          </div>
+        </div>
+
+        <div class="quiz-controls">
+          <button id="quizStartBtn" class="button button-primary" type="button">Start Quiz</button>
+          <button id="quizRetryBtn" class="button button-primary" type="button" style="display: none;">Try Again</button>
+          <button id="quizNextBtn" class="button button-secondary" type="button" style="display: none;">Next Question</button>
+        </div>
+
+        <div id="quizResults" class="quiz-results hidden">
+          <h3>Quiz Complete!</h3>
+          <p id="quizFinalScore"></p>
+          <p id="quizPercentage"></p>
+        </div>
+      </div>
+    </section>
 
     <template id="cocktailCardTemplate">
       <article class="cocktail-card">
@@ -111,7 +202,7 @@ Ingredienser: 2 cl vodka, 2 cl frisk citron, 3 cl lakridssirup, 4 cl passionspur
 Dry Martini
 Glas: Coupé Is: Ingen. Metode: Stir.
 Garnish: 2 oliven på pind eller citrontwist.
-Ingredienser: 6 cl gin, 1 cl Dry Vermouth.
+Ingredienser: 6 cl gin eller vodka, 1 cl Dry Vermouth.
 Negroni
 Glas: Lowball. Is: Cubed. Metode: Byg & Stir.
 Garnish: Appelsin Zest.
@@ -119,11 +210,11 @@ Ingredienser: 3 cl gin, 3 cl Sweet Vermouth, 3 cl Campari.
 Bramble
 Glas: Lowball. Is: Knust. Metode: Shake & Float.
 Garnish: Citron Skive.
-Ingredienser: 4 cl gin, 3 cl frisk citron, Crème de Mure (brombærlikør).
+Ingredienser: 4 cl gin, 3 cl frisk citron, 2 cl gomme, float 1 cl Crème de Mure (brombærlikør).
 Gin Basil Smash
 Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
 Garnish: Basilikumblad.
-Ingredienser: 4 cl gin, 2 cl frisk citron, 1.5 cl gomme / basilikumsirup, 1.5 cl æggehvide, basilikumsblade.
+Ingredienser: 4 cl gin, 2 cl frisk citron, 1.5 cl gomme / basilikumsirup, 1.5 cl æggehvide, 3 basilikumsblade.
 Tom Collins
 Glas: High Ball. Is: Cubed. Metode: Shake.
 Garnish: Citron Skive.
@@ -159,11 +250,11 @@ Ingredienser: 6 cl lys rom, 3 cl frisk lime, 1.5 cl gomme.
 Mai Tai
 Glas: Lowball. Is: Knust. Metode: Shake & Float.
 Garnish: Mint Sprig.
-Ingredienser: 2 cl lys rom, 2 cl mørk rom, 2 cl Cointreau, 2 cl Orgeat, 2 cl frisk lime. Evt. 1 cl overproof rom float.
+Ingredienser: 2 cl lys rom, 2 cl mørk rom, 2 cl Cointreau, 2 cl Orgeat, 2 cl frisk lime, Evt. 1 cl overproof rom float.
 Pina Colada
 Glas: Hurricane / Highball. Is: Knust. Metode: Blend / Shake.
 Garnish: Ananas Skive.
-Ingredienser: 4 cl rom, 8 cl ananasjuice, 2 cl kokossirup, 2 cl fløde. (Ved blend: tilføj 3 ananasskiver).
+Ingredienser: 4 cl rom, 8 cl ananasjuice, 2 cl kokossirup, 2 cl fløde, (Ved blend: tilføj 3 ananasskiver).
 Dark and Stormy
 Glas: High Ball. Is: Cubed. Metode: Byg.
 Garnish: Lime Skive.
@@ -195,7 +286,7 @@ Ingredienser: 5 cl bourbon, 3 cl frisk citron, 1.5 cl gomme, 1.5 cl æggehvide, 
 Manhattan
 Glas: Coupé. Is: Ingen. Metode: Stir.
 Garnish: Kirsebær (Normal), Citron Zest (Dry), eller begge (Perfect).
-Ingredienser: 6 cl Bourbon eller Rye, 2 dashes Angostura Bitters. (Sweet Vermouth til Normal, Dry Vermouth til Dry).
+Ingredienser: 6 cl Bourbon eller Rye, 2 dashes Angostura Bitters, (Sweet Vermouth til Normal, Dry Vermouth til Dry).
 Mint Julep
 Glas: Julep Cup / Lowball. Is: Knust. Metode: "Slow" Shake.
 Garnish: Mint Spring.
@@ -207,7 +298,7 @@ Ingredienser: 4 cl Jack Daniels, 2 cl Cointreau, 2 cl frisk citron, top med Lemo
 Margarita
 Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
 Garnish: Salt Rim og limeskive.
-Ingredienser: 5 cl tequila, 3 cl frisk lime, 2 cl Cointreau (evt. 1 cl gomme).
+Ingredienser: 5 cl tequila, 3 cl frisk lime, 2 cl Cointreau, (evt. 1 cl gomme).
 Paloma
 Glas: High Ball. Is: Cubed. Metode: Byg.
 Garnish: Salt Rim & Grape Skive.
@@ -230,7 +321,7 @@ Ingredienser: 4 cl Cognac, 3 cl frisk citron, 2 cl Cointreau.
 Caipirinha
 Glas: Lowball. Is: Knust. Metode: Muddle, Build & Churn.
 Garnish: Lime Skive.
-Ingredienser: 4 limebåde, 6 cl Cachaça. (Kaldes Caipiroska, hvis der bruges vodka).
+Ingredienser: 4 limebåde, 2 barskeer rørsukker, 6 cl Cachaça, (Kaldes Caipiroska, hvis der bruges vodka frem for Cachaça).
 Long Island Ice Tea
 Glas: High Ball. Is: Cubed. Metode: Shake / Byg.
 Garnish: Citron Skive.
