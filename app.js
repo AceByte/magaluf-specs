@@ -608,6 +608,7 @@ function renderQuestion() {
   ui.quizTotal.textContent = state.quiz.questions.length;
 
   document.querySelector("#quizGlass").textContent = `Glas: ${cocktail.glass || "Ukendt"}`;
+  document.querySelector("#quizIce").textContent = `Is: ${cocktail.ice || "Ukendt"}`;
   document.querySelector("#quizMethod").textContent = `Metode: ${cocktail.method || "Ikke angivet"}`;
   document.querySelector("#quizGarnish").textContent = `Garnish: ${cocktail.garnish || "-"}`;
 
