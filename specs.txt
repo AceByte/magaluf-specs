@@ -41,7 +41,7 @@ Ingredienser: 2 cl vodka, 2 cl frisk citron, 3 cl lakridssirup, 4 cl passionspur
 Dry Martini
 Glas: Coupé Is: Ingen. Metode: Stir.
 Garnish: 2 oliven på pind eller citrontwist.
-Ingredienser: 6 cl gin, 1 cl Dry Vermouth.
+Ingredienser: 6 cl gin eller vodka, 1 cl Dry Vermouth.
 Negroni
 Glas: Lowball. Is: Cubed. Metode: Byg & Stir.
 Garnish: Appelsin Zest.
@@ -49,11 +49,11 @@ Ingredienser: 3 cl gin, 3 cl Sweet Vermouth, 3 cl Campari.
 Bramble
 Glas: Lowball. Is: Knust. Metode: Shake & Float.
 Garnish: Citron Skive.
-Ingredienser: 4 cl gin, 3 cl frisk citron, Crème de Mure (brombærlikør).
+Ingredienser: 4 cl gin, 3 cl frisk citron, 2 cl gomme, float 1 cl Crème de Mure (brombærlikør).
 Gin Basil Smash
 Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
 Garnish: Basilikumblad.
-Ingredienser: 4 cl gin, 2 cl frisk citron, 1.5 cl gomme / basilikumsirup, 1.5 cl æggehvide, basilikumsblade.
+Ingredienser: 4 cl gin, 2 cl frisk citron, 1.5 cl gomme / basilikumsirup, 1.5 cl æggehvide, 3 basilikumsblade.
 Tom Collins
 Glas: High Ball. Is: Cubed. Metode: Shake.
 Garnish: Citron Skive.
@@ -89,11 +89,11 @@ Ingredienser: 6 cl lys rom, 3 cl frisk lime, 1.5 cl gomme.
 Mai Tai
 Glas: Lowball. Is: Knust. Metode: Shake & Float.
 Garnish: Mint Sprig.
-Ingredienser: 2 cl lys rom, 2 cl mørk rom, 2 cl Cointreau, 2 cl Orgeat, 2 cl frisk lime. Evt. 1 cl overproof rom float.
+Ingredienser: 2 cl lys rom, 2 cl mørk rom, 2 cl Cointreau, 2 cl Orgeat, 2 cl frisk lime, Evt. 1 cl overproof rom float.
 Pina Colada
 Glas: Hurricane / Highball. Is: Knust. Metode: Blend / Shake.
 Garnish: Ananas Skive.
-Ingredienser: 4 cl rom, 8 cl ananasjuice, 2 cl kokossirup, 2 cl fløde. (Ved blend: tilføj 3 ananasskiver).
+Ingredienser: 4 cl rom, 8 cl ananasjuice, 2 cl kokossirup, 2 cl fløde, (Ved blend: tilføj 3 ananasskiver).
 Dark and Stormy
 Glas: High Ball. Is: Cubed. Metode: Byg.
 Garnish: Lime Skive.
@@ -125,7 +125,7 @@ Ingredienser: 5 cl bourbon, 3 cl frisk citron, 1.5 cl gomme, 1.5 cl æggehvide, 
 Manhattan
 Glas: Coupé. Is: Ingen. Metode: Stir.
 Garnish: Kirsebær (Normal), Citron Zest (Dry), eller begge (Perfect).
-Ingredienser: 6 cl Bourbon eller Rye, 2 dashes Angostura Bitters. (Sweet Vermouth til Normal, Dry Vermouth til Dry).
+Ingredienser: 6 cl Bourbon eller Rye, 2 dashes Angostura Bitters, (Sweet Vermouth til Normal, Dry Vermouth til Dry).
 Mint Julep
 Glas: Julep Cup / Lowball. Is: Knust. Metode: "Slow" Shake.
 Garnish: Mint Spring.
@@ -137,7 +137,7 @@ Ingredienser: 4 cl Jack Daniels, 2 cl Cointreau, 2 cl frisk citron, top med Lemo
 Margarita
 Glas: Coupé. Is: Ingen. Metode: Shake & Fine Strain.
 Garnish: Salt Rim og limeskive.
-Ingredienser: 5 cl tequila, 3 cl frisk lime, 2 cl Cointreau (evt. 1 cl gomme).
+Ingredienser: 5 cl tequila, 3 cl frisk lime, 2 cl Cointreau, (evt. 1 cl gomme).
 Paloma
 Glas: High Ball. Is: Cubed. Metode: Byg.
 Garnish: Salt Rim & Grape Skive.
@@ -160,7 +160,7 @@ Ingredienser: 4 cl Cognac, 3 cl frisk citron, 2 cl Cointreau.
 Caipirinha
 Glas: Lowball. Is: Knust. Metode: Muddle, Build & Churn.
 Garnish: Lime Skive.
-Ingredienser: 4 limebåde, 6 cl Cachaça. (Kaldes Caipiroska, hvis der bruges vodka).
+Ingredienser: 4 limebåde, 2 barskeer rørsukker, 6 cl Cachaça, (Kaldes Caipiroska, hvis der bruges vodka frem for Cachaça).
 Long Island Ice Tea
 Glas: High Ball. Is: Cubed. Metode: Shake / Byg.
 Garnish: Citron Skive.
