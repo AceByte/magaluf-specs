@@ -712,20 +712,22 @@ h1 {
   }
 
   .filter-menu {
-    flex: 1 1 30%;
+    flex: 1 1 100%;
   }
 
   .filter-menu-toggle,
   .filter-chip-all {
     width: 100%;
-    justify-content: center;
+    text-align: center;
   }
 
   .filter-menu-content {
-    left: 0;
-    right: auto;
-    min-width: min(92vw, 340px);
-    max-width: min(92vw, 340px);
+    position: static;
+    margin-top: 0.4rem;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-shadow: none;
   }
 
   .filter-list {
